@@ -63,8 +63,9 @@ public class EventController {
 
     }
     @GetMapping
-   public ResponseEntity<ApiResponse<List<Event>>> getAllEvents(){
-        List<Event> event = eventService.getAllEvents();
+   public ResponseEntity<ApiResponse<List<Event>>> getAllEvents(@RequestParam(defaultValue = "1") Integer page,
+                                                                @RequestParam(defaultValue = "10") Integer size){
+        List<Event> event = eventService.getAllEvents(page, size);
         ApiResponse<List<Event>> response = ApiResponse.<List<Event>>builder()
                 .message("Delete All Event is successfully")
                 .payload(event)

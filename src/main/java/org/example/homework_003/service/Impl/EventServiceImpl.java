@@ -41,10 +41,6 @@ public class EventServiceImpl implements EventService {
         eventRepository.deleteEventById(eventId);
     }
 
-    @Override
-    public List<Event> getAllEvents() {
-        return eventRepository.getAllEvents();
-    }
 
     @Override
     public Event saveEvent(EventRequest request) {
@@ -52,5 +48,11 @@ public class EventServiceImpl implements EventService {
             throw new NotFoundException("Can not be Null");
         }else
         return eventRepository.saveEvent(request);
+    }
+
+    @Override
+    public List<Event> getAllEvents(Integer page, Integer size) {
+        page = (page - 1) * size;
+        return eventRepository.getAllEvents(page, size);
     }
 }

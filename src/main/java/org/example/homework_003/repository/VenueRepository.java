@@ -11,14 +11,15 @@ public interface VenueRepository {
 
 
     @Select ("""
-        SELECT  * FROM venues;
+        SELECT  * FROM venues
+        OFFSET #{offset} LIMIT #{limit};
 """)
     @Results(id="VenueMapper", value = {
             @Result(property = "venueId" , column = "venue_id"),
 
 
     })
-    List<Venue> getAllVenues();
+    List<Venue> getAllVenues(@Param("offset") Integer page, @Param("limit") Integer size);
 
 
     @ResultMap("VenueMapper")

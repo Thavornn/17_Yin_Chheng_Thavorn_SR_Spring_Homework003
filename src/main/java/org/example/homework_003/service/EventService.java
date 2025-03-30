@@ -17,7 +17,9 @@ public interface EventService  {
 
     void deleteEventById(Long eventId);
 
-    List<Event> getAllEvents();
+
 
     Event saveEvent(EventRequest request);
+
+    List<Event> getAllEvents(Integer page, Integer size);
 }

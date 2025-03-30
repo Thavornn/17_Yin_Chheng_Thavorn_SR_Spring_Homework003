@@ -61,8 +61,9 @@ public class AttendeeController {
         }
 
         @GetMapping
-        public ResponseEntity<ApiResponse<List<Attendee>>>gettAllAttendee() {
-            List<Attendee> attendees = attendeeService.getAllAttendee();
+        public ResponseEntity<ApiResponse<List<Attendee>>>gettAllAttendee(@RequestParam(defaultValue = "1") Integer page,
+                                                                          @RequestParam(defaultValue = "10") Integer size) {
+            List<Attendee> attendees = attendeeService.getAllAttendee(page, size);
             ApiResponse<List<Attendee>> response = ApiResponse.<List<Attendee>>builder()
                     .message("Update Attendee By Id is successfully")
                     .payload(attendees)

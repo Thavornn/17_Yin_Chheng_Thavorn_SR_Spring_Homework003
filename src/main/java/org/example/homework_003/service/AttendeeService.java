@@ -15,7 +15,9 @@ public interface AttendeeService {
 
     void deleteAttendeeById(Long attendeeId);
 
-    List<Attendee> getAllAttendee();
+
 
     Attendee SaveAttendee(AttendeeRequest request);
+
+    List<Attendee> getAllAttendee(Integer page, Integer size);
 }

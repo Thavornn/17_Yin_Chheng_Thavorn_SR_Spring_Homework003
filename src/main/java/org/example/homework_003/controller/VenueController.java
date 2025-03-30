@@ -35,8 +35,9 @@ public class VenueController {
 //    }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<Venue>>> getAllVenues(){
-        List<Venue> venues = venueService.getAllVenues();
+    public ResponseEntity<ApiResponse<List<Venue>>> getAllVenues(@RequestParam(defaultValue = "1") Integer page,
+                                                                 @RequestParam(defaultValue = "10") Integer size){
+        List<Venue> venues = venueService.getAllVenues(page, size);
         ApiResponse<List<Venue>> response= ApiResponse.<List<Venue>>builder()
                 .message("Get All venue is successfully")
                 .payload(venues)

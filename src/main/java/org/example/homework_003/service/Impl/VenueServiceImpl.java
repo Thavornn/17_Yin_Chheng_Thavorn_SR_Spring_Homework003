@@ -25,11 +25,6 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public List<Venue> getAllVenues() {
-        return venueRepository.getAllVenues();
-    }
-
-    @Override
     public Venue deleteVenueById(Integer venueId) {
         if(venueRepository.getVenueById(venueId) == null ){
             throw new NotFoundException("Id is null");
@@ -53,5 +48,11 @@ public class VenueServiceImpl implements VenueService {
             throw new NotFoundException("Can not be Null");
         }else
         return venueRepository.saveVenue(request);
+    }
+
+    @Override
+    public List<Venue> getAllVenues(Integer page, Integer size) {
+        page = (page - 1) * size;
+        return venueRepository.getAllVenues(page, size);
     }
 }

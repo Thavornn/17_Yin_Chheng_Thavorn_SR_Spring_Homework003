@@ -47,9 +47,9 @@ public interface AttendeeRepository {
 
     @ResultMap("attMapper")
     @Select("""
-        SELECT * FROM attendees;
+        SELECT * FROM attendees OFFSET (#{offset}, #{limit});
 """)
-    List<Attendee> getAllAttendee();
+    List<Attendee> getAllAttendee(@Param("offser") Integer page, @Param("limit") Integer size);
 
 
     @ResultMap("attMapper")

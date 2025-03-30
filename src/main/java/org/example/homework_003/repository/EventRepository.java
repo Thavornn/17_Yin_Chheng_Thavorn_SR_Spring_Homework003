@@ -52,7 +52,7 @@ public interface EventRepository {
     @Select("""
         SELECT * FROM events;
 """)
-    List<Event> getAllEvents();
+    List<Event> getAllEvents(@Param("offset") Integer page, @Param("limit") Integer size);
 
 
     @ResultMap("eventMapper")

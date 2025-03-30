@@ -43,8 +43,9 @@ public class AttendeeServiceImpl implements AttendeeService {
     }
 
     @Override
-    public List<Attendee> getAllAttendee() {
-        return attendeeRepository.getAllAttendee();
+    public List<Attendee> getAllAttendee(Integer page, Integer size) {
+        page = (page - 1) * size;
+        return attendeeRepository.getAllAttendee(page, size);
     }
 
     @Override
@@ -54,6 +55,7 @@ public class AttendeeServiceImpl implements AttendeeService {
         }else
         return attendeeRepository.saveAttendee(request);
     }
+
 
 
 }

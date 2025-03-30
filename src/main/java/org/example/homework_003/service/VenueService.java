@@ -13,11 +13,13 @@ public interface VenueService {
    ;
 
 
-      List<Venue> getAllVenues();
+
 
     Venue deleteVenueById(Integer venueId);
 
     Venue getVenueById(Integer venueId);
 
     Venue saveVenue(VenueRequest request);
+
+    List<Venue> getAllVenues(Integer page, Integer size);
 }
